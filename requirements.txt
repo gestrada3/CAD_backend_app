@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+sqlalchemy
+aiosqlite
+flake8
+pytest
+httpx2
