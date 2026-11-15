@@ -1,8 +1,8 @@
 # cad_backend_app
 
-apt-get update -y
-apt-get install -y python3.14-venv
-python3.14 -m venv venv
+apt update -y
+apt install -y python3.15-venv
+python3.15 -m venv venv
 source venv/bin/activate
 
 pip install --upgrade pip

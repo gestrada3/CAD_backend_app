@@ -17,15 +17,15 @@ logging.basicConfig(filename='server.log',
                     encoding='utf-8', level=logging.DEBUG)
 
 # Create the FastAPI application
-app = FastAPI()
+app = FastAPI(title="My SaaS Project")
 
 # Add CORS middleware to allow React frontend to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React's default port
-    allow_credentials=True,
+    allow_origins=["*"],  # Allow all origins
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
+    allow_credentials=True
 )
 
 
@@ -44,7 +44,7 @@ def read_root():
     return {"message": "Use the RESTful API"}
 
 
-# CREATE - Add a new item
+# CREATE - Add new item
 @app.post("/items/", response_model=schemas.Item)
 def create_item(item: schemas.ItemCreate, db: Session = Depends(get_db)):
     logging.info("CREATE : %s ", item)
