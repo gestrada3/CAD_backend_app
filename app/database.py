@@ -1,14 +1,14 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
+from os import environ
 
-# Database URL for SQLite (it will create a file called test.db)
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+# Database URL for SQLite
+#engine = create_engine(
+#    "sqlite:///./test.db", connect_args={"check_same_thread": False})
 
-# Create the database engine
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
+# Database URL for Postgres
+engine = create_engine(environ["SQLALCHEMY_DATABASE_URL"])
 
 # Create a SessionLocal class for database sessions
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

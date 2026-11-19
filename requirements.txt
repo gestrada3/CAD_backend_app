@@ -5,3 +5,4 @@ aiosqlite
 flake8
 pytest
 httpx2
+psycopg2-binary
