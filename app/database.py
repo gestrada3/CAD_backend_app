@@ -8,7 +8,7 @@ from os import environ
 #    "sqlite:///./test.db", connect_args={"check_same_thread": False})
 
 # Database URL for Postgres
-engine = create_engine(environ["SQLALCHEMY_DATABASE_URL"])
+engine = create_engine(environ["DATABASE_URL"])
 
 # Create a SessionLocal class for database sessions
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
