@@ -7,8 +7,12 @@ from os import environ
 # engine = create_engine(
 #    "sqlite:///./test.db", connect_args={"check_same_thread": False})
 
-# Database URL for Postgres
-engine = create_engine(environ.get("DATABASE_URL", "sqlite:///./test.db"))
+# Try the DATABASE_URL (e.g. RDS Postgres)
+try:
+    engine = create_engine(environ["DATABASE_URL"])
+except:
+    engine = create_engine("sqlite:///./test.db",
+            connect_args={"check_same_thread": False})
 
 # Create a SessionLocal class for database sessions
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
