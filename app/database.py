@@ -9,7 +9,7 @@ from os import environ
 
 # Try the DATABASE_URL (e.g. RDS Postgres)
 try:
-    engine = create_engine(environ["DATABASE_URL"])
+    engine = create_engine(environ["DATABASE_URL"]+"/postgres?sslmode=require")
 except:
     engine = create_engine("sqlite:///./test.db",
             connect_args={"check_same_thread": False})
